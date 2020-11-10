@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue code</title>
+    <script src="./lib/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- 这个是我们的v -->
+    <div id="app">
+        <p>{{ msg }}</p>
+        <input type="button" value="按钮" v-bind:title="msg" v-on:click="show">
+        <p v-for="(item,i) in list">索引{{i}},值{{item}}</p><!-- 遍历list -->
+        <p v-for="(item,i) in list2">索引{{i}},值{{item.id}}{{item.name}}</p><!-- 遍历list(key,val) -->
+        <p v-for="(val,key,) in user">值{{key}}{{val}}</p>
+        <p v-for="count in 10">{{count}}</p>
+    </div>
+
+    <script type="text/javascript">
+        //创建一个vue实例
+        //这就是我们的vm调度者
+        var vm=new Vue({
+            el: '#app',//表示当前我们new的这个实例要控制在页面上的那个区域
+            //这就是我们的mv层
+            data:{ //存放的是el属性用到的数据
+                msg:'hello world',
+                msg2:"<h1>hello world</h1>",
+                list:[1,2,3,4,5,6],
+                list2:[
+                    {id:10,name:"xx"},
+                    {id:15,name:"xx"}
+                ],
+                user:{
+                    name:"haha",
+                    gender:"jajaja"
+                }
+            },
+            methods:{
+                show:function(){
+                    alert("hi")
+                }
+            }
+        })
+    </script>
+    
+    
+</body>
+</html>

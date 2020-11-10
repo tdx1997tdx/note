@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue code</title>
+    <script src="./lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-com1></my-com1>
+        <my-com2></my-com2>
+    </div>
+
+    <script type="text/javascript">
+        //第一种
+        var com1 = Vue.extend({
+            template: "<h3>来了老弟</h3>"
+        })
+        Vue.component('myCom1', com1)
+            //第二种
+        Vue.component('myCom2', {
+            template: "<h3>来了老弟</h3>"
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "单纯的我"
+            },
+            methods: {}
+        })
+    </script>
+
+
+</body>
+
+</html>

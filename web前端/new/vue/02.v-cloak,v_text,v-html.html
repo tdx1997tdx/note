@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue code</title>
+    <script src="./lib/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 解决插值表达式闪烁 -->
+    <style>
+        [v-cloak]{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <!-- 这个是我们的v -->
+    <div id="app">
+        <p>{{ msg }}</p>
+        <p v-text="msg"></p>
+        <p v-html="msg2"></p>
+    </div>
+
+    <script type="text/javascript">
+        //创建一个vue实例
+        //这就是我们的vm调度者
+        var vm=new Vue({
+            el: '#app',//表示当前我们new的这个实例要控制在页面上的那个区域
+            //这就是我们的mv层
+            data:{ //存放的是el属性用到的数据
+                msg:'hello world',
+                msg2:"<h1>hello world</h1>"
+            }
+        })
+    </script>
+    
+    
+</body>
+</html>

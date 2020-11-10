@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue code</title>
+    <script src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">监控平台</h3>
+            </div>
+            <!-- Navigation -->
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                            <img alt="Brand" src="...">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="panel-body form-inline">
+                <label>
+                        id:
+                        <input type="text" class="form-control" v-model="id" @keyup.enter="add">
+                    </label>
+                <label>
+                        name:
+                        <input type="text" class="form-control" v-model="name" @keyup.enter="add">
+                    </label>
+                <input type="button" value="添加" class="btn btn-primary" @click=add>
+                <label>
+                        搜索:
+                        <input type="text" class="form-control" v-model="keyword">
+                    </label>
+            </div>
+        </div>
+
+
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>ctime</th>
+                    <th>op</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in search(keyword)" :key="item.id">
+                    <th>{{item.id}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.ctime | Format}}</th>
+                    <th>
+                        <a herf="" @click.prevent="del(item.id)">删除</a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        Vue.filter("Format", function(ctime) {
+            var date = new Date(ctime)
+            var x = date.getFullYear()
+            var y = date.getMonth().toString().padStart(2, "0")
+            var z = date.getDay().toString().padStart(2, "0")
+            var a = date.getHours().toString().padStart(2, "0")
+            var b = date.getMinutes().toString().padStart(2, "0")
+            var c = date.getSeconds().toString().padStart(2, "0")
+            return x + "-" + y + "-" + z + " " + a + ":" + b + ":" + c
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: { //存放的是el属性用到的数据
+                id: "",
+                name: "",
+                keyword: "",
+                list: [{
+                    id: 1,
+                    name: "Tom",
+                    ctime: new Date()
+                }, {
+                    id: 2,
+                    name: "Jerry",
+                    ctime: new Date()
+                }]
+            },
+            methods: {
+                add() {
+                    if (this.id == "" || this.name == "") {
+                        return
+                    }
+                    this.list.push({
+                        id: this.id,
+                        name: this.name,
+                        ctime: new Date()
+                    })
+                    this.id = this.name = ""
+                },
+                del(id) {
+                    for (var i = 0; i < this.list.length; i++) {
+                        if (this.list[i].id == id) {
+                            this.list.splice(i, 1)
+                            break
+                        }
+                    }
+                },
+                search(keyword) {
+                    var newList = []
+                    for (var i = 0; i < this.list.length; i++) {
+                        if (this.list[i].name.indexOf(keyword) != -1) {
+                            newList.push(this.list[i])
+                        }
+                    }
+                    return newList
+                }
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

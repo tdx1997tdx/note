@@ -1,0 +1,142 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    background-color: #F4F5F9;
+}
+
+
+/* 头部 */
+
+.head {
+    height: 40px;
+    margin: 30px 0px;
+}
+
+
+/* 头部logo */
+
+.head .logo {
+    float: left;
+    width: 150px;
+    margin-left: 60px;
+}
+
+
+/* 头部导航栏 */
+
+.head .nav {
+    float: left;
+}
+
+.head .nav li {
+    display: inline-block;
+    margin-left: 60px;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.head .nav li a {
+    text-decoration: none;
+    color: black;
+}
+
+.head .nav li a:hover {
+    text-decoration: none;
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+
+
+/* 头部输入框 */
+
+.search {
+    float: left;
+    margin-left: 80px;
+}
+
+.search input {
+    float: left;
+    height: 40px;
+    width: 300px;
+    border: 1px solid #00a4ff;
+    border-right: 0px;
+    font-size: 14px;
+    color: #bfbfbf;
+    padding-left: 20px;
+}
+
+.search button {
+    float: left;
+    height: 40px;
+    width: 50px;
+    border: none;
+    background-image: url(image/button.png);
+}
+
+.search button:active {
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3) inset;
+}
+
+
+/* 头部用户 */
+
+.user {
+    float: left;
+    margin-left: 80px;
+    line-height: 40px;
+}
+
+.user:hover {
+    color: #bfbfbf;
+    background-color: blue;
+}
+
+
+/* banner */
+
+.banner {
+    height: 400px;
+    background-color: #1c036c;
+}
+
+.banner .w {
+    height: 400px;
+    width: 1000px;
+    margin: 0px auto;
+    background: url(image/bg.png) no-repeat top center;
+}
+
+.banner .w ul {
+    float: left;
+    height: 400px;
+    width: 160px;
+    padding: 0px 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.banner .w ul li {
+    height: 45px;
+    line-height: 45px;
+}
+
+.banner .w ul li:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner .w ul li a {
+    float: left;
+    text-decoration: none;
+    color: white;
+}
+
+.banner .w ul li span {
+    float: right;
+    color: white;
+}
